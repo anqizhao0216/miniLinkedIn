@@ -1,17 +1,36 @@
 import React from 'react'
 import ReactDom from 'react-dom'
-import App from './App'
-import { createStore } from 'redux'
-import {counter} from './index.redux'
+import { createStore, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
+import { Provider } from 'react-redux'
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  Redirect
+} from 'react-router-dom'
 
-const store = createStore(counter)
+import reducers from './reducer'
+import Auth from './Auth'
+import Dashboard from './Dashboard'
+
+const store = createStore(reducers, compose(
+  applyMiddleware(thunk),
+  window.devToolsExtension?window.devToolsExtension():()=>{}
+))
+
+console.log(store.getState())
 
 
-function render() {
-    ReactDom.render(<App store = { store } />, document.getElementById('root'))
-}
-
-
-render()
-
-store.subscribe(render)
+ReactDom.render(
+  (<Provider store = {store}>
+    <BrowserRouter>
+      <Switch>
+        <Route path='/login' exact component={Auth}></Route>
+        <Route path='/dashboard' component={Dashboard}></Route>
+        <Redirect to='/dashboard'></Redirect>
+      </Switch>
+    </BrowserRouter>
+   </Provider>),
+   document.getElementById('root')
+ )
