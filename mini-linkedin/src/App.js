@@ -9,7 +9,7 @@ import { addGun, removeGun, addGunAsync } from './index.redux'
 
 // 使用了插件所以connect可以写在App之前，而且不用传入App
 @connect(
-    state => ({num: state.counter}),
+    state => ({num: state}),
     ({addGun, addGunAsync, removeGun})
 )
 // App 可以完全抽离出来，只和组件的属性有关
