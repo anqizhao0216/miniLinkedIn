@@ -13,10 +13,12 @@ import {
 import reducers from './reducer'
 import Auth from './Auth'
 import Dashboard from './Dashboard'
+import './config'
+import 'antd-mobile/dist/antd-mobile.css'
 
 const store = createStore(reducers, compose(
   applyMiddleware(thunk),
-  window.devToolsExtension?window.devToolsExtension():()=>{}
+  window.devToolsExtension?window.devToolsExtension():f=>f
 ))
 
 console.log(store.getState())
