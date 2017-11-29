@@ -2,17 +2,20 @@ import React from 'react'
 import axios from 'axios'
 
 class AuthRouter extends React.Component {
-
-  render() {
-    axios.get('/user/info').then(
-      (req, res) => {
-        if (res.status == 200) {
+  componentDidMount() {
+    // get user info
+    axios.get('/user/info')
+      .then(res => {
+        if (res.status === 200) {
           console.log(res.data)
         }
-      }
-    )
+      })
+  }
+
+  render() {
+    console.log('hello')
     return (
-      <div></div>
+      <div>redirect</div>
     )
   }
 }
