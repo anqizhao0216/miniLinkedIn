@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
+import {withRouter} from 'react-router-dom'
 
+@withRouter
 class AuthRouter extends React.Component {
   componentDidMount() {
     // get user info
