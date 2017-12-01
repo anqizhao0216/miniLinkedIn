@@ -16,12 +16,16 @@ const store = createStore(reducers, compose(
   window.devToolsExtension?window.devToolsExtension():f=>f
 ))
 
+function Boss () {
+  return <h2>Boss Page</h2>
+}
 
 ReactDom.render(
   (<Provider store = {store}>
     <BrowserRouter>
       <div>
         <AuthRouter></AuthRouter>
+        <Route path='/boss' component={Boss}></Route>
         <Route path='/login' component={Login}></Route>
         <Route path='/register' component={Register}></Route>
       </div>
