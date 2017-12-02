@@ -11,6 +11,10 @@ class Register extends React.Component {
       repeatpwd:'',
       type: 'talent'
     }
+    this.handleClick = this.handleClick.bind(this)
+  }
+  handleClick() {
+    console.log(this.state)
   }
   handleChange(key, value) {
     this.setState ({
@@ -50,7 +54,9 @@ class Register extends React.Component {
             Boss
           </RadioItem>
           <WhiteSpace />
-          <Button type='primary'>Register</Button>
+          <Button type='primary'
+            onClick={this.handleClick}
+          >Register</Button>
         </List>
       </div>
     )
