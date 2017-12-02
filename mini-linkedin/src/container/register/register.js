@@ -38,7 +38,9 @@ class Register extends React.Component {
           >Confirm Password</InputItem>
 
           <WhiteSpace />
-          <RadioItem checked={this.state.type=='talent'}>
+          <RadioItem checked={this.state.type=='talent'}
+            onChange={v=>this.handleChange('type', 'talent')}
+          >
             Talent
           </RadioItem>
           <WhiteSpace />
