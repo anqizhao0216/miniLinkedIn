@@ -12,6 +12,12 @@ class Register extends React.Component {
       type: 'talent'
     }
   }
+  handleChange(key, value) {
+    this.setState ({
+      [key]: value
+    })
+    // console.log(this.state.user)
+  }
   render() {
     const RadioItem = Radio.RadioItem
     return (
@@ -19,11 +25,17 @@ class Register extends React.Component {
         <Logo></Logo>
         <h2>register</h2>
         <List>
-          <InputItem>Username</InputItem>
+          <InputItem
+            onChange={v=>this.handleChange('user', v)}
+          >Username</InputItem>
           <WhiteSpace />
-          <InputItem>Password</InputItem>
+          <InputItem
+            onChange={v=>this.handleChange('pwd', v)}
+          >Password</InputItem>
           <WhiteSpace />
           <InputItem>Confirm Password</InputItem>
+
+          <WhiteSpace />
           <RadioItem checked={this.state.type=='talent'}>
             Talent
           </RadioItem>
