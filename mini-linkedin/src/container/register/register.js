@@ -44,7 +44,9 @@ class Register extends React.Component {
             Talent
           </RadioItem>
           <WhiteSpace />
-          <RadioItem checked={this.state.type=='boss'}>
+          <RadioItem checked={this.state.type=='boss'}
+            onChange={v=>this.handleChange('type', 'boss')}
+          >
             Boss
           </RadioItem>
           <WhiteSpace />
