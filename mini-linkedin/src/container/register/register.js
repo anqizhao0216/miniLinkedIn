@@ -1,7 +1,14 @@
 import React from 'react'
 import Logo from '../../component/logo/logo'
 import {List,Radio,InputItem,WingBlank,WhiteSpace,Button} from 'antd-mobile'
+import {connect} from 'react-redux'
+import {register} from '../../redux/user.redux'
 
+
+@connect(
+  state => state.user,
+  {register}
+)
 class Register extends React.Component {
   constructor(props) {
     super(props)
@@ -11,10 +18,10 @@ class Register extends React.Component {
       repeatpwd:'',
       type: 'talent'
     }
-    this.handleClick = this.handleClick.bind(this)
+    this.handleRegister = this.handleRegister.bind(this)
   }
-  handleClick() {
-    console.log(this.state)
+  handleRegister() {
+    this.props.register(this.state)
   }
   handleChange(key, value) {
     this.setState ({
@@ -29,6 +36,7 @@ class Register extends React.Component {
         <Logo></Logo>
         <h2>register</h2>
         <List>
+          {this.props.msg?<p className='error-msg'>{this.props.msg}</p>:null}
           <InputItem
             onChange={v=>this.handleChange('user', v)}
           >Username</InputItem>
@@ -57,7 +65,7 @@ class Register extends React.Component {
           </RadioItem>
           <WhiteSpace />
           <Button type='primary'
-            onClick={this.handleClick}
+            onClick={this.handleRegister}
           >Register</Button>
         </List>
       </div>

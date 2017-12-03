@@ -7,10 +7,12 @@ import {BrowserRouter,Route,Switch,Redirect} from 'react-router-dom'
 
 import reducers from './reducer'
 import './config'
+import './index.css'
 import Login from './container/login/login'
 import Register from './container/register/register'
 import AuthRouter from './component/AuthRouter/AuthRouter'
 import 'antd-mobile/dist/antd-mobile.css'
+
 const store = createStore(reducers, compose(
   applyMiddleware(thunk),
   window.devToolsExtension?window.devToolsExtension():f=>f
