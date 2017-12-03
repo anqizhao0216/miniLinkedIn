@@ -38,6 +38,12 @@ export function register({user,pwd, repeatpwsd, type}) {
   }
   return dispatch => {
     axios.post('/user/register', {user, pwd, type})
-    .then()
+    .then(res = > {
+      if (res.status ==== 200 && res.data.code == 0) {
+        dispatch(REGISTER_SUCCESS({user, pwd, type}))
+      } else {
+        dispatch(errorMsg{res.data.msg})
+      }
+    })
   }
 }
