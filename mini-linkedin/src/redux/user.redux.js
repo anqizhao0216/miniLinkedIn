@@ -1,4 +1,4 @@
-
+import axios from 'axios'
 const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 const ERROR_MSG = 'ERROR_MSG'
 
@@ -29,20 +29,20 @@ function registerSuccess(data) {
 function errorMsg(msg) {
   return {msg, type: ERROR_MSG}
 }
-export function register({user,pwd, repeatpwsd, type}) {
+export function register({user, pwd, repeatpwd, type}) {
   if (!user||!pwd||!type) {
     return errorMsg('please type username and passward')
   }
   if (pwd !== repeatpwd) {
-    erturn errorMsg('different passward')
+    return errorMsg('different passward')
   }
   return dispatch => {
     axios.post('/user/register', {user, pwd, type})
-    .then(res = > {
-      if (res.status ==== 200 && res.data.code == 0) {
+    .then(res => {
+      if (res.status === 200 && res.data.code === 0) {
         dispatch(REGISTER_SUCCESS({user, pwd, type}))
       } else {
-        dispatch(errorMsg{res.data.msg})
+        dispatch(errorMsg(res.data.msg))
       }
     })
   }
