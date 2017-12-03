@@ -10,8 +10,15 @@ const initState = {
   type: ''
 }
 // reducer
-export function user(state, action) {
-  return state
+export function user(state = initState, action) {
+  switch (action.type) {
+    case REGISTER_SUCCESS:
+      return {...state, msg:'', isAuth:true,}
+    case ERROR_MSG:
+    default:
+      return state
+
+  }
 }
 
 export function register({user,pwd, repeatpwsd, type}) {
