@@ -19,7 +19,7 @@ const store = createStore(reducers, compose(
 ))
 
 function Boss () {
-  return <h2>Boss Page</h2>
+  return <h2>Boss</h2>
 }
 
 ReactDom.render(
