@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import {withRouter} from 'react-router-dom'
 
+// auth router
 @withRouter
 class AuthRouter extends React.Component {
   componentDidMount() {
