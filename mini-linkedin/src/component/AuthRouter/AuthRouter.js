@@ -26,9 +26,7 @@ class AuthRouter extends React.Component {
 
   render() {
     console.log('hello')
-    return (
-      <div>redirect</div>
-    )
+    return null
   }
 }
 
