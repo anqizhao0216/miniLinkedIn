@@ -29,15 +29,22 @@ Router.post('/register', function(req, res) {
         if (doc) {
             return res.json({code:1, msg: '用户名重复'})
         }
-        const userModel = new User({user, type, pwd: md5Pwd(pwd)})
-        userModel.save(function(err, doc) {
+        User.create({user, type, pwd:md5Pwd(pwd)}, function(err, doc) {
           if (err) {
             return res.json({code:1, msg: '后端出错了'})
           }
-          const {user, type, _id} = d
-          res.cookie('uesrid', _id)
-          return res.json({code:0, data:{user, type, _id}})
+          return res.json({code: 0})
         })
+        // 使用下面的方法会报 500 的错误
+        // const userModel = new User({user, type, pwd: md5Pwd(pwd)})
+        // userModel.save(function(err, doc) {
+        //   if (err) {
+        //     return res.json({code:1, msg: '后端出错了'})
+        //   }
+        //   const {user, type, _id} = d
+        //   res.cookie('uesrid', _id)
+        //   return res.json({code:0, data:{user, type, _id}})
+        // })
     })
 })
 Router.get('/info', function(req, res) {

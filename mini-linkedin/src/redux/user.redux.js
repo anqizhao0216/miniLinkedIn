@@ -35,12 +35,11 @@ function registerSuccess(data) {
 function loginSuccess(data) {
   return {type:LOGIN_SUCCESS, payload:data}
 }
-
 function errorMsg(msg) {
   return {msg, type: ERROR_MSG}
 }
-
 export function loadData(userinfo) {
+  console.log(loadData)
   return {type:LOAD_DATA, payload:userinfo}
 }
 
