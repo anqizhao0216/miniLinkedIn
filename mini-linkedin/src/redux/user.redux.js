@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {getRedirectPath}  from '../util'
-
+ 
 const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 const ERROR_MSG = 'ERROR_MSG'
